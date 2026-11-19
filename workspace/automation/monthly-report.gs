@@ -1,30 +1,6 @@
 // AI-assisted, directed by renter
 /** @OnlyCurrentDoc */
 
-function checkstock(){
-  const ss =SpreadsheetApp.getActiveSpreadsheet();
-  const dashboard =ss.getSheetByName("DASHBOARD")
-  const StockData =dashboard.getRange("A12:C15").
-  getValues();
-
-  const lowStockItems =StockData.filter (row=> row[2]=== "REORDER");
-  let reminders =ss.getSheetByName("REMINDERS");
-  if (!reminders) {
-    reminders =ss.insertSheet ("REMINDERS")
-  }
-  reminders.clearContents();
-
-  reminders.getRange("A1:C1").setValues ( 
-    [["ITEM", "CURRENT STOCK", "STATUS"]]
-  );
-  if (lowStockItems.length > 0) {
-    reminders.getRange( 2, 1, lowStockItems.length, 3).
-    setValues(lowStockItems);
-  }
-}
-
-
-
 function generateMonthlyReport(){
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const record = ss.getSheetByName("RECORD")
@@ -32,9 +8,9 @@ function generateMonthlyReport(){
   const reportMonth = 10;
   const reportYear = 2026;
 
-  const monthName = new Date (reportYear, reportMonth).toLocaleTimeString("en",{month: "long"});
-  const monthLabel = '${monthName} ${reportYear}';
-  const monthlySales = data.filter(row => typeof row[0].getMonth === "function" && row[0].getMonth() === reportMonth && row[0].getFullYear() === reportYear && row[2] === "OUT");ar()=== reportYear && row[2]==="OUT");
+  const monthName = new Date (reportYear, reportMonth).toLocaleDateString("en",{month: "long"});
+  const monthLabel = `${monthName} ${reportYear}`;
+  const monthlySales = data.filter(row => typeof row[0].getMonth === "function" && row[0].getMonth() === reportMonth && row[0].getFullYear() === reportYear && row[2] === "OUT");
 
   const totalSales = monthlySales.reduce((sum,row) => sum + Number(row[5]||0),0);
   const unitsSold = monthlySales.reduce((sum,row) => sum + Number(row[3] || 0),0);

@@ -1,14 +1,10 @@
 # Test log -- SCS3.5
 
-<!-- The answers are worked out by hand, on paper, BEFORE the script runs.  Expected first, actual after, edge case -->
-<!-- last.  Pass or fail: the result now (fail -> pass after a patch is fine).  Where a test fails: trace it, change  -->
-<!-- the one line by hand, run again, commit the patch on its own, and write its line and commit here.               -->
-
-| Case | Input rows (made up) | Expected (by hand, before the run) | Actual (after the run) | Pass or fail | Patch (line, commit) |
-|---|---|---|---|---|---|
-| Test 1 | | | | | |
-| Test 2 | | | | | |
-| Edge case | | | | | |
-| Second edge case (optional, SGL menu) | | | | | |
-| Partner as a careless owner | | | | | |
-| Re-run in front of the trainer | | | | | |
+| Case                                  | Input rows (made up)                                                                                                                          | Expected (by hand, before the run)                                                         | Actual (after the run)                                                                                  | Pass or fail | Patch (line, commit)    |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- | ------------ | ----------------------- |
+| Test 1                                | `RECORD` rows for Nov 2026 (`month=10, year=2026`): 2 `OUT` rows (qty 5 @ 200 = 1000; qty 3 @ 150 = 450) and 1 `IN` row (qty 10 @ 100 = 1000) | `MONTHLYREPORT` A2:C2 shows `November 2026`, `1450`, `8`                                   | First run showed `November 2026`, `0`, `0`; after patching line 13, showed `November 2026`, `1450`, `8` | fail -> pass | line 13, commit 37b2243 |
+| Test 2                                | `INTAKE` row 2 edited with item `"Soda 500ml"` in A2 and quantity `12` in B2                                                                  | C2 stamped with today's date (`dd/MM/yyyy`) and D2 set to `"OK"`                           | C2 stamped with `19/11/2026` and D2 set to `"OK"`                                                       | pass         |                         |
+| Edge case                             | `RECORD` has 0 matching `OUT` rows for Nov 2026 (only Oct 2026 rows); `INTAKE` row 3 edited with quantity `-5` and `"abc"`                    | `MONTHLYREPORT` A2:C2 shows `November 2026`, `0`, `0`; `INTAKE` D3 shows `"INVALID ENTRY"` | `MONTHLYREPORT` showed `November 2026`, `0`, `0`; `INTAKE` D3 showed `"INVALID ENTRY"`                  | pass         |                         |
+| Second edge case (optional, SGL menu) | `RECORD` row with blank price cell in column F on an `OUT` row                                                                                | Blank price treated as `0` without `NaN` error                                             | Total calculated cleanly with `0` added                                                                 | pass         |                         |
+| Partner as a careless owner           | Edited column E on `INTAKE` and edited row 1 header on `INTAKE`                                                                               | Script exits early without overwriting headers or stamping status                          | No cells modified                                                                                       | pass         |                         |
+| Re-run in front of the trainer        | Re-ran `generateMonthlyReport` and edited `INTAKE` row 4 live                                                                                 | Matches expected totals and validation status                                              |                                                                                                         |              |                         |
