@@ -24,3 +24,10 @@ Never write a password here. The first password is handed over by voice.
 none
 
 ## Audit match
+
+## SCS3.2 -- sharing, security, backups, offboarding (2026-11-18)
+
+Practice OU only.  Every row written before the click; the check column filled after it.
+
+| # | Time | What I am about to change (console path) | Who or what it affects | Why, in one line | How I checked it | Undo |
+|---|---|---|---|---|---|---|
