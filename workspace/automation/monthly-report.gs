@@ -34,7 +34,7 @@ function generateMonthlyReport(){
 
   const monthName = new Date (reportYear, reportMonth).toLocaleTimeString("en",{month: "long"});
   const monthLabel = '${monthName} ${reportYear}';
-  const monthlySales = data.filter(row =>row[0].getMonth ==="function" && typeof row[0].getMonth()===reportMonth && row[0].getFullYear()=== reportYear && row[2]==="OUT");
+  const monthlySales = data.filter(row => typeof row[0].getMonth === "function" && row[0].getMonth() === reportMonth && row[0].getFullYear() === reportYear && row[2] === "OUT");ar()=== reportYear && row[2]==="OUT");
 
   const totalSales = monthlySales.reduce((sum,row) => sum + Number(row[5]||0),0);
   const unitsSold = monthlySales.reduce((sum,row) => sum + Number(row[3] || 0),0);
