@@ -1,0 +1,8 @@
+# SCS2.1 Method Note
+
+1. Purpose: I created a personal bio-page to introduce myself and show my web development progress.
+2. Structure: I used HTML to organise the page into a header, navigation, main sections and footer.
+3. Styling: I used an external CSS stylesheet to control the appearance of the page.
+4. Label: Hand-made.
+5. Receipt: none used -- hand-only anchor.
+6. What I might be wrong about: I may have missed a broken navigation link. I would test every link in the browser to find out.
