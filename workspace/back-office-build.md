@@ -5,9 +5,8 @@
 4. **Is there a phone/computer available at the kiosk?** Yes, the owner updates the sheet on their phone/laptop at close of business.
 5. **Does the owner want this structure?** Yes, they asked for an automatic REORDER alert.
 
-Verdict: Sheets
-Pattern: inventory
-Because: Bri's Kiosk needs automated stock balances and REORDER flags across multiple items without manual ledger math.
+Verdict: Sheets.  Pattern: inventory.  Because: Bri's Kiosk needs automateo
+d stock balances and REORDER alerts across multiple items without manual ledger math.
 
 ## Validation
 | Column | Rule | The garbage I typed | Refused? |
