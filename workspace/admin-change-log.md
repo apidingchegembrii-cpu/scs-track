@@ -1,33 +1,18 @@
-# Admin change log -- SCS3.1
+# Admin Change Log
 
-Date: 2026-11-17
-Sandbox admin sign-in: renter@<sandbox domain>
-My unit: /Trainees/renter
-Naming convention: first.last
+## 2026-11-20
 
-One row per admin action, written BEFORE the click. A ticket may take several rows; add them as you go.
-Logged at: the time on the laptop clock when you wrote the row.
-Console path: where you expect to click, with ">" between the steps; correct it after if the console differs.
-Audit log: filled in SGL/Lab -- the time the console's audit log shows for this change, or "gap:" and why.
-Never write a password here. The first password is handed over by voice.
-
-| #   | Ticket           | Logged at     | What I am about to change (console path)                                      | Who or what it affects                                                       | Why (the three questions, one line)                                                                           | How I checked it                                                                                  | Audit log                                                                   |
-| --- | --- | --- | --- | --- | ---- |--- | --- | ----- |
-|     | 1 New starter | 10:50                                                                         | Admin console > Directory > Users > Add new user                             | amina.okello, new Front Desk starter                                                                          | The job needs counter email and calendar, extra access risks financial records, the owner decided | Verified user appears active in users list and signed in via private window | 10:52 |
-| 2   | 2 Groups         | 10:55         | Admin console > Directory > Groups > Create group                             | counter@<sandbox-domain>, counter staff                                      | Staff need one shared address for shift rotas, wider access exposes management mail, the shop manager decided | Verified group page lists all counter members                                                     | 10:57                                                                       |
-| 3   | 3 Units          | 11:00         | Admin console > Directory > Organizational units > Create organizational unit | Front Desk under /Trainees/chegembrigid/Staff                                | Chat must be turned off for counter staff only while other staff keep it, the owner decided                   | Verified Front Desk OU appears in tree and moved new starter into it                              | 11:02                                                                       |
-| 4   | 4 Delegated role | 11:05         | Admin console > Account > Admin roles > Assign users                          | Accountant user in /Trainees/chegembrigid/Staff, Password Reset Admin        | The job needs password resets for staff only, full admin risks billing and data deletion, the owner decided   | Signed in as accountant and tested three actions to confirm role limits                           | 11:07                                                                       |
-| 5   | 5 Rollback       | 11:10         | Admin console > Account > Admin roles > Unassign users                        | Accountant user in /Trainees/chegembrigid/Staff, remove Password Reset Admin | The role test is complete and elevated privileges are no longer needed, the trainer decided                   | Confirmed Password Reset Admin role is removed from the accountant user profile                   | 11:12                                                                       |
-
-## Gaps
-
-none
-
-## Audit match
-
-## SCS3.2 -- sharing, security, backups, offboarding (2026-11-18)
-
-Practice OU only.  Every row written before the click; the check column filled after it.
-
-| # | Time | What I am about to change (console path) | Who or what it affects | Why, in one line | How I checked it | Undo |
-|---|---|---|---|---|---|---|
+| # | Ticket / Step | Logged at | What I am about to change (console path) | Who or what it affects | Why — one line | How I checked it | Rollback |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 | Sharing outside OFF | 2026-11-20 09:10 | Admin console > Apps > Google Workspace > Drive and Docs > Sharing settings (/Trainees/renter): sharing outside OFF | Everyone in /Trainees/renter | Prevent shop files from leaving the business domain | Partner outside share attempt blocked with screenshot | Set sharing outside domain back to ON |
+| 2 | Link default Restricted | 2026-11-20 09:15 | Admin console > Apps > Google Workspace > Drive and Docs > Sharing settings (/Trainees/renter): link default Restricted | Everyone in /Trainees/renter | New files default to restricted rather than anyone with link | Confirmed Overridden on practice OU | Set link default back to Anyone with link |
+| 3 | Allow Shared drives | 2026-11-20 09:20 | Admin console > Apps > Google Workspace > Drive and Docs > Sharing settings (/Trainees/renter): allow Shared drives | Everyone in /Trainees/renter | Allow business-owned Shared drives for shop files | Created Shop files Shared Drive in second profile | Disable Shared drive creation on OU |
+| 4 | Shared drive & close link | 2026-11-20 09:25 | Google Drive (second profile): restrict customer-list and create Shop files Shared Drive with renter@ as Manager | customer-list, invoice-0042, price-list | Close existing public link and move shop files out of personal My Drive | Partner tested old link in private window and was blocked | Move files back to My Drive and re-enable link |
+| 5 | 2-Step Verification | 2026-11-20 09:40 | Admin console > Security > Authentication > 2-step verification (/Trainees/renter): allow, set enrolment period, enforce | Everyone in /Trainees/renter | Protect accounts with 2SV without locking out new starters | Partner enrolled amina.otieno@ with authenticator app + screenshot | Turn 2SV enforcement off for practice OU |
+| 6 | Devices screen lock | 2026-11-20 09:50 | Admin console > Devices > Mobile and endpoints > Settings (/Trainees/renter): basic management ON, screen lock required | Everyone in /Trainees/renter | Protect business data on mobile endpoints and allow account removal | Verified Overridden on practice OU; located Remove account path | Disable screen lock requirement on OU |
+| 7 | Offboard: Mail route | 2026-11-20 10:12 | Admin console > Apps > Google Workspace > Gmail > Routing (/Trainees/renter): route amina.otieno@ to renter@ | amina.otieno@sandbox.local | Ensure customer emails to leaver reach the manager before suspend | Partner sent test email to leaver and it arrived at manager | Remove routing rule |
+| 8 | Offboard: Suspend | 2026-11-20 10:18 | Admin console > Directory > Users > amina.otieno@ > Suspend user | amina.otieno@sandbox.local | Offboard leaver immediately without deleting data or audit trail | Status shows Suspended; second profile sign-in refused | Reactivate user |
+| 9 | Offboard: Password & sessions | 2026-11-20 10:20 | Admin console > Directory > Users > amina.otieno@ > Security: reset password, sign out all sessions, revoke tokens | amina.otieno@sandbox.local | Cut off all active sessions and bypasses | Confirmed active sessions signed out and tokens revoked | Reset password again for active user |
+| 10 | Offboard: Data transfer | 2026-11-20 10:25 | Admin console > Account > Data transfer: transfer Drive and Calendar from amina.otieno@ to renter@ | amina.otieno@ -> renter@ | Transfer remaining drafts and Bookings calendar ownership to manager | Confirmed drafts and Bookings appear in manager Drive/Calendar | Transfer files back if needed |
+| 11 | Reset: Un-suspend | 2026-11-20 14:30 | Admin console > Directory > Users > amina.otieno@ > Reactivate | amina.otieno@sandbox.local | Leave practice OU whole after offboarding and restore exercises | Status shows Active; signed in once in second profile | Suspend user |
+| 12 | Reset: Remove mail route | 2026-11-20 14:35 | Admin console > Apps > Google Workspace > Gmail > Routing (/Trainees/renter): remove routing rule for amina.otieno@ | amina.otieno@sandbox.local | Restore normal mail delivery for reactivated practice user; transferred files stay with manager | Verified routing rule removed and direct mail delivers normally | Re-add routing rule |
