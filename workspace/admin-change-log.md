@@ -1,6 +1,6 @@
 # Admin Change Log
 
-## 2026-11-20
+## SCS3.2 — 2026-11-20
 
 | # | Ticket / Step | Logged at | What I am about to change (console path) | Who or what it affects | Why — one line | How I checked it | Rollback |
 | :-: | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
