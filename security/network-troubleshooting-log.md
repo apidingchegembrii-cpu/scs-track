@@ -47,7 +47,7 @@ SA initialled the paper log (yes / not yet): yes
 
 ## Fault 3 -- fault card, I was the fixer
 
-Sealed log fingerprint (the 12 characters in my break.sh guess file): paste_12_chars_here
+Sealed log fingerprint (the 12 characters in my break.sh guess file): fe5a775510af
 Card number (after the reveal): 27
 Symptom (the owner's words, as my partner said it): Lab laptop has self-assigned 169.254.x.x IP and cannot reach router
 My guess (device, cable or network): network
