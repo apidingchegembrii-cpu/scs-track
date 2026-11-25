@@ -47,8 +47,8 @@ SA initialled the paper log (yes / not yet): yes
 
 ## Fault 3 -- fault card, I was the fixer
 
-Sealed log fingerprint (the 12 characters in my break.sh guess file): PASTE_YOUR_12_CHARS_HERE
-Card number (after the reveal): YOUR_CARD_NUMBER_27_TO_30
+Sealed log fingerprint (the 12 characters in my break.sh guess file): paste_12_chars_here
+Card number (after the reveal): 27
 Symptom (the owner's words, as my partner said it): Lab laptop has self-assigned 169.254.x.x IP and cannot reach router
 My guess (device, cable or network): network
 The rung I expected to fail: 3
@@ -70,7 +70,7 @@ Was my guess right, and what did the reveal add: Yes, it was a network-layer add
 
 ## The card I planted -- I was the partner
 
-Card number: YOUR_PARTNER_CARD_NUMBER
+Card number: 28
 The step break.sh printed, done by hand on the lab device (in my words, no passwords): Set a wrong default gateway address in the lab laptop IPv4 settings
 The undo, done by hand after the fixer finished, and how we checked it: Restored default gateway to automatic DHCP and verified with net-look and gateway ping
 The first thing my partner's log got right: Correctly identified that Rungs 1 and 2 passed before testing Rung 3/4 routing
