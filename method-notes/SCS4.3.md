@@ -1,8 +1,6 @@
-# Method note -- SCS4.3 Defensive Security and Backups
-
-1. What I set out to do:
-2. What I did, in order:
-3. How I checked it worked:
-4. What went wrong and what I did about it:
-5. What I would do differently next time:
-6. What I might be wrong about, and how I would find out:
+1. What I set out to do: Set a known-good firewall and server baseline on brii-Virtual-Machine, configure scheduled backups, test a restore, keep evidence safely, and document the work.
+2. What I did, in order: Verified ufw rules and ports (22 and 8069 open, 8000 blocked), set the cron job and /srv/scs-backups (mode 700), ran a backup and restore test, copied evidence, and filled out the SCS4.3 notes.
+3. How I checked it worked: Checked baseline-look output, tested connectivity from the laptop, verified the backup archive and receipt status, compared restored vs. live data, and ran SCS4.3 checks.
+4. What went wrong and what I did about it: Initially ran server commands in Ubuntu-SCS instead of over SSH on the server, then located ~/scs/projects/scs-track and committed the generated baseline and note files.
+5. What I would do differently next time: Check the prompt hostname/user before running server commands and jump straight to ~/scs/projects/scs-track for repository tasks.
+6. What I might be wrong about, and how I would find out: A check could still fail if the restore test, laptop/stick archive copy, or filled-in baseline/log details are incomplete—re-running baseline-look, Fetch Receipts, and the SCS4.3 check script will confirm.
